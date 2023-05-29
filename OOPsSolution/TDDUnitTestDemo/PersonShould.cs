@@ -14,12 +14,17 @@ namespace TDDUnitTestDemo
             string firstname = "Ekamjot";
             string lastname = "Kaur";
 
+            Residence address = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
+            string expectedaddress = "123,Maple St.,Edmonton,AB,T6Y7U8";
+            Person me = new Person(firstname, lastname, address, null);
+
+            string expectedfirstname = "bob";
+
             //Act (execution) (sut subject under test)
-            Person sut = new Person(firstname, lastname);
+            me.FirstName = expectedfirstname;
 
             //Assert(testing of the action)
-            sut.FirstName.Should().Be(firstname);
-            sut.LastName.Should().Be("lastname");
+            me.FirstName.Should().Be(expectedfirstname);
+
         }
     }
-}
