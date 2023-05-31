@@ -12,7 +12,7 @@ namespace OOPsReview
        //one could assign their own values to each of the enum names
 
         Entry,              //0
-        TeamMwmber,         //1
+        TeamMember,         //1
         TeamLeader,         //2
         Supervisor,         //3
         DepartmentHead,     //4
