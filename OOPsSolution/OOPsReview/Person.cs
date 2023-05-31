@@ -33,11 +33,15 @@ namespace OOPsReview
             {
                 EmploymentPositions = employmentpositions;  //store the supplied list of employments
             }
-
+            //else
+            //{
+            //    EmploymentPositions= new List<Employment>();  //create an empty instance of the list
+            //}
         }
 
         public Person()
         {
+            //EmploymentPositions= new List<Employment>();  //create an empty instance of the list}
             FirstName = "unknown";
             LastName = "unknown";
 
