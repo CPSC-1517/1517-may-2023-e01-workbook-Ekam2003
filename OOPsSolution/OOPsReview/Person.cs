@@ -16,6 +16,9 @@ namespace OOPsReview
         public Residence Address { get; set; }
         public List<Employment> EmploymentPositions { get; set; } = new List<Employment>();
 
+        public string FullName { get { return LastName + "," + FirstName; } }
+
+        public int NumberOfEmployment { get { return LastName + "," + FirstName} }
         public Person(string firstname, string lastname, Residence address, List<Employment> employmentpositions)
         {
             if (string.IsNullOrWhiteSpace(firstname))
@@ -39,12 +42,17 @@ namespace OOPsReview
             //}
         }
 
+       
         public Person()
         {
             //EmploymentPositions= new List<Employment>();  //create an empty instance of the list}
             FirstName = "unknown";
             LastName = "unknown";
 
+        }
+        public void AddEmployment(Employment employment)
+        {
+            EmploymentPositions.Add(employment);
         }
     }
 }
