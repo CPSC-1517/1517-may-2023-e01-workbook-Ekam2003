@@ -8,7 +8,9 @@ namespace OOPsReview
 {
     public enum SupervisoryLevel
     {
-       // enum names are strings representing an interger value by default the interger values start at 0 and increment by 1 
+       // enum names are strings representing an interger value
+       // by default the interger values start at 0 and increment by 1 
+
        //one could assign their own values to each of the enum names
 
         Entry,              //0

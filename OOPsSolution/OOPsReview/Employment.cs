@@ -1,21 +1,73 @@
-﻿namespace OOPsReview
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOPsReview
 {
     public class Employment
     {
+
+     /*** DATA MEMBERS FOR CLASS  ***/
+
         private SupervisoryLevel _Level;
-        private string _Title;
+        private string _Title; // Somethimes it shows green Line under string because eventually
+                               // we have to define whether it is nullable or non-nullable string 
+                               // string? means it  is a nullable string.
+                               // now default of string is null.
         private double _Years;
 
+
+        /***  PROPERTIES  ***/
+
+        // Properties are asscociated with a single piece of data.
+
+        // Properties can be implemented by:
+        //  a) fully implemented properties
+        //  b) auto implemented properties
+
+            // Fully implemented property usually has additional logic to execute for
+            //     the control over the data; such as validation
+            // Fully implemented properties will have a declared data member to store the data 
+         
+            // Auto implemented properties do not have additional logic
+            // Auto implemented properties do not have a declared data member to
+            //     store the data instead the o/s will create on the property's behave a
+            //     storage area that is accessable ONLY by using the property
+
+        // a property will always have an accessor (get)
+        // a property may or may not have a mutator
+        //     no mutator the property is consider "read-only" and is usually
+        //         returning a computed value:
+        //         example a FullName  made up of 2 pieces of data FirstName and Lastname
+        //      in this it is just concatenating the data
+
+        //     has a mutator the property will at some point save the data to storage
+        //     the mutator may be public (default) or private
+        //          public: accessable by outside users of the class
+        //          private: accessable ONLY within the class
+        //  a property DOES NOT have ANY declare incoming parameter list!!!!!
         public string Title
         {
+            //referred to as the accessor
+            //returns the string associated with this property
             get { return _Title; }
-            set {
-                if (string.IsNullOrWhiteSpace(value)) 
-                { 
+
+            //referred to as the mutator
+            //it is within the set that the validation of the data
+            //  is done to determine if the data is acceptable
+            //by default set is public
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
                     throw new ArgumentNullException("Title is required");
                 }
-                
-                _Title = value;
+                //else
+                //{
+                        _Title = value;
+                // }
             }
         }
 
