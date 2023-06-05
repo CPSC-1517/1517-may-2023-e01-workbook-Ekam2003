@@ -6,6 +6,12 @@ namespace UnitTestingForSystem
 {
     public class Employment_Should
     {
+        //this is XUnit testing.
+        //a unit test is identified by the attribute [Fact] or [Theory]
+        //
+        //[Fact] is a unit test that receives no input parameters
+        //[Theory] is a unit test that receives input parameter
+
         #region Valid Data
         [Fact]
         public void Create_New_Default_Instance()
@@ -25,7 +31,7 @@ namespace UnitTestingForSystem
             actual.StartDate.Should().Be(expectedStartDate);
             actual.Years.Should().Be(expectedYears);
         }
-       
+
         [Fact]
         public void Create_New_Greedy_Instance()
         {
@@ -44,7 +50,7 @@ namespace UnitTestingForSystem
             actual.StartDate.Should().Be(expectedStartDate);
             actual.Years.Should().Be(expectedYears);
         }
-        
+
         [Fact]
         public void Create_New_Greedy_Instance_With_Years_Default()
         {
@@ -53,7 +59,7 @@ namespace UnitTestingForSystem
             SupervisoryLevel expectedLevel = SupervisoryLevel.TeamLeader;
             DateTime expectedStartDate = new DateTime(2020, 10, 24);
             TimeSpan days = DateTime.Today - expectedStartDate;
-            double expectedYears = Math.Round((days.Days / 365.2),1);
+            double expectedYears = Math.Round((days.Days / 365.2), 1);
 
             //When - Act execution
             Employment actual = new Employment(expectedTitle, expectedLevel, expectedStartDate);
@@ -77,11 +83,11 @@ namespace UnitTestingForSystem
             Employment sut = new Employment(Title, Level, StartDate, Years);
             string expectedTitle = "Development Head";
             //When - Act execution
-            sut.Title ="Development Head";
+            sut.Title = "Development Head";
 
             //Then - Assert check
             sut.Title.Should().Be(expectedTitle);
-           
+
         }
 
         [Fact]
@@ -175,14 +181,15 @@ namespace UnitTestingForSystem
             TimeSpan days = DateTime.Today - StartDate;
             double Years = Math.Round((days.Days / 365.2), 1);
             Employment sut = new Employment(Title, Level, StartDate, Years);
-            string expectedCSV = $"SAS Lead,TeamLeader,Oct. 24, 2020,{Years}";
+            //string expectedCSV = $"SAS Lead,TeamLeader,Oct 24, 2020,{Years}"; //Nait
+            string expectedCSV = $"SAS Lead,TeamLeader,Oct. 24, 2020,{Years}"; //home
 
             //When - Act execution
             string actual = sut.ToString();
 
             //Then - Assert check
             actual.Should().Be(expectedCSV);
-            
+
         }
         #endregion
 
@@ -190,7 +197,7 @@ namespace UnitTestingForSystem
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        [InlineData("      ")]
+        [InlineData("     ")]
         public void Create_New_Greedy_Instance_Throws_Title_Exception(string title)
         {
             //Where - Arrangement setup
@@ -261,7 +268,7 @@ namespace UnitTestingForSystem
         }
 
         [Theory]
-        
+
         [InlineData(-5.5)]
         public void Directly_Change_Years_Throws_Exception(double years)
         {
@@ -273,7 +280,7 @@ namespace UnitTestingForSystem
             Employment sut = new Employment(Title, Level, StartDate, Years);
 
             //When - Act execution
-           Action action = () => sut.Years = years;
+            Action action = () => sut.Years = years;
 
             //Then - Assert check
             action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*-5.5*");

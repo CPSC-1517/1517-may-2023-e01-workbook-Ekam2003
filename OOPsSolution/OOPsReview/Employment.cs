@@ -77,10 +77,11 @@ namespace OOPsReview
 
             private set
             {
-                // a private set means that the property can only be set
-                // by code within the class definition
-                // an advantage of doing this is increasing security on the field
-                //as any change is under the control of the class definition
+                //  A private set means that the property can only be set by code 
+                //   within the class definition (outside user cannot do this)        
+
+                // An advantage of doing this is increasing security on the field
+                //     as any change is under the control of the class definition  
 
                 //validate the value given as an enum is actually defined
 
@@ -98,8 +99,8 @@ namespace OOPsReview
                 _Level = value;
             }
         }
-        // validate the years of the service in the employee position as a positive value.
 
+        // validate the years of the service in the employee position as a positive value.
         public double Years
         {
             get { return _Years; } // used on the right side of an assignment statement or in an expression
@@ -110,7 +111,7 @@ namespace OOPsReview
                 {
                     throw new ArgumentOutOfRangeException("value");
                 }
-                _Years = value;
+                _Years = value; // it is not preffered to write it as value = _Years;
             }
         }
 
@@ -129,21 +130,24 @@ namespace OOPsReview
         // Constructor
 
         // the purpose of a constructor is to create an instance of your class
-        //in a known state.
-        //does  a class definition need a constructor? No
+        // in a known state.
+
+        // does  a class definition need a constructor? No
+
         // if a class definition does not have a constructor then the system
-        //will create the instance and assign the system default value to the data member
+        // will create the instance and assign the system default value to the data member
         // and / or implemented property
-        //if you have no constructor the common phrase is "using a system constructor"
 
-        //IF YOU CODE A CONSTRUCTOR  IN YPUR CLASS YOU ARE RESPONSIBLE FOR ANY AND ALL CONSTRUCTIONS 
-        //FOR THE CLASS!!!
+        // if you have no constructor the common phrase is "using a system constructor"
 
-        //default constructor
+        // IF YOU CODE A CONSTRUCTOR  IN Y0UR CLASS YOU ARE RESPONSIBLE FOR ANY AND ALL CONSTRUCTIONS 
+        //                                  FOR THE CLASS!!!
+
+        // DEFAULT CONSTRUCTOR:
         // you can apply your own literal values for your data members and/or auto-implemented properties
-        //that diifer from the system default values
-        //why? you may have data that is validated and using the system default values would cause an
-        //exception
+        // that diifer from the system default values
+        // why? you may have data that is validated and using the system default values would cause an
+        // exception
 
         public Employment()
         {
@@ -153,20 +157,20 @@ namespace OOPsReview
             //specially if the property contains validation
 
             Title = "Unknown";
-            Level = SupervisoryLevel.TeamMwmber;
+            Level = SupervisoryLevel.TeamMember;
             StartDate = DateTime.Today;
             // optionally one could set years to zero, but that is the system default
             // value for a numeric, therefore one does not need to assign a value
             //unless you wish to do
         }
-        //greedy constructor
+        // GREEDY CONSTRUCTOR
         // a greedy constructor is one that accepts a parameter list of values to
         // assign to your instance data on creation of the instance
-        //generally your greedy constructor contains a parameter on the signature
-        //for each data member you have in your class defintion
+        // generally your greedy constructor contains a parameter on the signature
+        // for each data member you have in your class defintion
 
-        //all default paraameters must appear after non-default parametera in your parameter list
-        // in this example, we will use Years as an optional parameters
+        // all default parameters must appear after non-default parameters in your parameter list
+        // in this example, we will use Years as an default parameters
 
     public Employment(string title, SupervisoryLevel level,
                         DateTime startdate, double years =0.0)
@@ -174,6 +178,7 @@ namespace OOPsReview
             Title = title;
             Level = level;
             Years = years;
+
             //this example to demonstate where you can place validation for
             // properties have are auto-implemented
             //validation start date must not exist in the future
@@ -193,5 +198,10 @@ namespace OOPsReview
             }
             StartDate = startdate;
         }
+
+        //Behaviours (a.k.a. methods)
+        //a method consists of a header (accesslevel, rdt(return data type), methodname, ([list of parameters])
+        //                     a coding block     { ....... }
+
     }
 }

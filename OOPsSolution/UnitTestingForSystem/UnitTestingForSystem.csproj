@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\OneDrive\Documents\GitHub\1517-may-2023-e01-workbook-Ekam2003\OOPsSolution\OOPsReview\OOPsReview.csproj" />
+    <ProjectReference Include="..\OOPsReview\OOPsReview.csproj" />
   </ItemGroup>
 
 </Project>

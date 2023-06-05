@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDUnitTestDemo", "TDDUnitTestDemo\TDDUnitTestDemo.csproj", "{C17DDC32-E015-424B-878F-C76AD82E02CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestingForSystem", "..\..\..\..\..\Downloads\UnitTestingForSystem\UnitTestingForSystem\UnitTestingForSystem.csproj", "{EB1ABA2F-BA33-4D36-8153-43F1D9DE0540}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestingForSystem", "UnitTestingForSystem\UnitTestingForSystem.csproj", "{4A0ACA13-BB3E-4927-9AD2-6941164DA7BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{C17DDC32-E015-424B-878F-C76AD82E02CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C17DDC32-E015-424B-878F-C76AD82E02CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C17DDC32-E015-424B-878F-C76AD82E02CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB1ABA2F-BA33-4D36-8153-43F1D9DE0540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB1ABA2F-BA33-4D36-8153-43F1D9DE0540}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB1ABA2F-BA33-4D36-8153-43F1D9DE0540}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB1ABA2F-BA33-4D36-8153-43F1D9DE0540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A0ACA13-BB3E-4927-9AD2-6941164DA7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A0ACA13-BB3E-4927-9AD2-6941164DA7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A0ACA13-BB3E-4927-9AD2-6941164DA7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A0ACA13-BB3E-4927-9AD2-6941164DA7BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
