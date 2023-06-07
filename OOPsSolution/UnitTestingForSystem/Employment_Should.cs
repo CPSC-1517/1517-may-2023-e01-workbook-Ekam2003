@@ -13,8 +13,8 @@ namespace UnitTestingForSystem
         //[Theory] is a unit test that receives input parameter
 
         #region Valid Data
-        [Fact]
-        public void Create_New_Default_Instance()
+        [Fact]  // Attribute
+        public void Create_New_Default_Instance() //Method
         {
             //Where - Arrangement setup
             string expectedTitle = "Unknown";
@@ -195,8 +195,8 @@ namespace UnitTestingForSystem
 
         #region Invalid Data
         [Theory]
-        [InlineData(null)]
-        [InlineData("")]
+        [InlineData(null)]          //With theory it runs your test
+        [InlineData("")]            //for each of the data rows.
         [InlineData("     ")]
         public void Create_New_Greedy_Instance_Throws_Title_Exception(string title)
         {
