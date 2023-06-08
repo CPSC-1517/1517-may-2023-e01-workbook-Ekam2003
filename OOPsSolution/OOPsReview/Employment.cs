@@ -12,7 +12,7 @@ namespace OOPsReview
      /*** DATA MEMBERS FOR CLASS  ***/
 
         private SupervisoryLevel _Level;
-        private string _Title; // Somethimes it shows green Line under string because eventually
+        private string _Title; // Sometimes it shows green Line under string because eventually
                                // we have to define whether it is nullable or non-nullable string 
                                // string? means it  is a nullable string.
                                // now default of string is null.
