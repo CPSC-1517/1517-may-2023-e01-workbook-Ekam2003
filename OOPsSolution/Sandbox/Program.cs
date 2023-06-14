@@ -1,16 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using OOPsReview;
-using System.Text.Json;
+using System.Text.Json;  //for Json serialization namespace
 
 Console.WriteLine("Hello, World!");
 
 //driver code
 //RecordSamples();
-// RefactorSample();
+//RefactorSample();
+//FileIOCSV();
+
 //explore JSon files writing and reading
 //create a Person instance with name, address and employments
-Person me = CreatePerson();
-DisplayPerson(me);
+//Person me = CreatePerson();
+//DisplayPerson(me);
 
 //file path C:\Temp\PersonData.json
 //string filepathname = @"C:\Temp\PersonData.json";
@@ -106,6 +108,7 @@ Person ReadAsJson(string filepathname)
         //      you will need to place the json attribute [JsonConstructor]
         //      in front the of greedy constructor so that
         //      the greedy constructor is the one used.
+
         person = JsonSerializer.Deserialize<Person>(jsonstring);
     }
     catch (Exception ex)
@@ -117,13 +120,14 @@ Person ReadAsJson(string filepathname)
 }
 
 
-void FileTOCSV()
+void FileIOCSV()
 {
-    // create a collection of Employment instances to write out the data
+
+    //create a collection of Employment instances to write out the data
     List<Employment> employments = new List<Employment>();
-    employments.Add(new Employment(" SAS Member",(SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "TeamMember") ,DateTime.Parse("2015/06/14"),3.6));
-    employments.Add(new Employment(" SAS Lead", (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "TeamLeader"), DateTime.Parse("2019/01/24"), 2.8));
-    employments.Add(new Employment(" SAS Lead", (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "TeamLeader"), DateTime.Parse("2021/09/24"), 1.8));
+    employments.Add(new Employment("SAS Member", (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "TeamMember"), DateTime.Parse("2015/06/14"), 3.6));
+    employments.Add(new Employment("SAS Lead", (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "TeamLeader"), DateTime.Parse("2019/01/24"), 2.8));
+    employments.Add(new Employment("SAS Lead", (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), "Supervisor"), DateTime.Parse("2021/09/24"), 1.8));
 
     DumpEmployments(employments);
 
@@ -133,29 +137,30 @@ void FileTOCSV()
     employmentsRead = Read_Employment_Collection_From_CSV();
 
     DumpEmployments(employmentsRead);
-
 }
 List<Employment> Read_Employment_Collection_From_CSV()
 {
-    //use the file class to append text records into a file
-    // by using the file class one does not need to setup file IO stream
-    // File IO streams (Writer and Reader) are built into the methods of the File class
+    //use the File class to append text records into a file
+    //by using the File class one does not need to setup file IO stream
+    //   File IO streams (Writer and Reader) are built into the methods of the File class
+    //   
 
     //file path C:\Temp\EmploymentData.txt
     string filepathname = @"C:\Temp\EmploymentData.txt";
 
     Employment employmentInstance = null;
     List<Employment> employmentCollection = new List<Employment>();
+
     try
     {
-        //REadAllLines
-        // returns an array of all lines from a file as strings
-        string[] employmentCSvStrings = File.ReadAllLines(filepathname);
+        //ReadAllLines
+        //returns an array of all lines from a file as strings
+        string[] employmentCSVStrings = File.ReadAllLines(filepathname);
 
-        //covert each string from the CSV data into an Employment Instance
+        //convert each string from the CSV data into an Employment Instance
         //use the .Parse from this action
 
-        foreach (string line in employmentCSvStrings)
+        foreach (string line in employmentCSVStrings)
         {
             try
             {
@@ -164,59 +169,58 @@ List<Employment> Read_Employment_Collection_From_CSV()
             }
             catch (ArgumentNullException ex)
             {
-                Console.WriteLine($"\tREcord Error: {ex.Message}");
+                Console.WriteLine($"\tRecord Error: {ex.Message} on data line {line}");
             }
-
             catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine($"\tREcord Error: {ex.Message}");
+                Console.WriteLine($"\tRecord Error: {ex.Message} on data line {line}");
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine($"\tREcord Error: {ex.Message}");
+                Console.WriteLine($"\tRecord Error: {ex.Message} on data line {line}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"\tREcord Error: {ex.Message}");
+                Console.WriteLine($"\tRecord Error: {ex.Message} on data line {line}");
             }
-            return employmentCollection;
-
         }
     }
-    
-}
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    return employmentCollection;
 
+}
 void Write_Employment_Collection_To_CSV(List<Employment> employments)
 {
-    //use the file class to append text records into a file
-    // by using the file class one does not need to setup file IO stream
-    // File IO streams (Writer and Reader) are built into the methods of the File class
+    //use the File class to append text records into a file
+    //by using the File class one does not need to setup file IO stream
+    //   File IO streams (Writer and Reader) are built into the methods of the File class
+    //   
 
     //file path C:\Temp\EmploymentData.txt
     string filepathname = @"C:\Temp\EmploymentData.txt";
 
-    //Covert List<Employment> into a List<string>
+    //convert List<Employment> into a List<string>
     List<string> employmentCollectionAsStrings = new List<string>();
     foreach (Employment employment in employments)
     {
         employmentCollectionAsStrings.Add(employment.ToString());
     }
 
-
-    //.AppendAllLines 
-    File.AppendAllLines(filepathname, employmentCollectionAsStrings) ;
+    //.AppendAllLines
+    File.AppendAllLines(filepathname, employmentCollectionAsStrings);
 }
-
-void DumpEmployments(List<Employment>employments)
+void DumpEmployments(List<Employment> employments)
 {
-    Console.WriteLine("\n\t\tDump of employment instances \n");
+    Console.WriteLine("\n\t\tDump of employment instances\n");
     for (int i = 0; i < employments.Count; i++)
     {
-        Console.WriteLine($"Instances {i}:\t {employments[i].ToString}");
+        Console.WriteLine($"Instance {i}:\t {employments[i].ToString()}");
     }
 }
-
- void RecordSamples()
+void RecordSamples()
 {
     Residence myHome = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
     Console.WriteLine(myHome.ToString());
@@ -228,68 +232,68 @@ void DumpEmployments(List<Employment>employments)
     myHome = new Residence(321, "Maple St.", "Edmonton", "AB", "T6Y7U8");
     Console.WriteLine(myHome.ToString());
 }
-
-Residence myHome = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
-Console.WriteLine(myHome.ToString());
-
-//example of refactoring
-//Refactoring is the process of restructing code, while not
-//      changing it original functionality.The goal of refactoring
-//      is to improve internal code by making small changes without altering
-//      the codes external behaviour.
-
-//orignal code
-bool flag = false;
-if (myHome.Province.ToLower() == "ab")
+void RefactorSample()
 {
-    flag = true;
-}
-if (myHome.Province.ToLower() == "bc")
-{
-    flag = true;
-}
-if (myHome.Province.ToLower() == "sk")
-{
-    flag = true;
-}
-if (myHome.Province.ToLower() == "mn")
-{
-    flag = true;
-}
+    //example of refactoring
+    //Refactoring is the process of restructing code, while not
+    //      changing it original functionality.The goal of refactoring
+    //      is to improve internal code by making small changes without altering
+    //      the codes external behaviour.
 
-if (myHome.Province.ToLower() == "ab" ||
-    myHome.Province.ToLower() == "bc" ||
-    myHome.Province.ToLower() == "sk" ||
-    myHome.Province.ToLower() == "mn")
-{
-    flag = true;
+    Residence myHome = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
+    //orignal code
+    bool flag = false;
+    if (myHome.Province.ToLower() == "ab")
+    {
+        flag = true;
+    }
+    if (myHome.Province.ToLower() == "bc")
+    {
+        flag = true;
+    }
+    if (myHome.Province.ToLower() == "sk")
+    {
+        flag = true;
+    }
+    if (myHome.Province.ToLower() == "mn")
+    {
+        flag = true;
+    }
+
+    if (myHome.Province.ToLower() == "ab" ||
+        myHome.Province.ToLower() == "bc" ||
+        myHome.Province.ToLower() == "sk" ||
+        myHome.Province.ToLower() == "mn")
+    {
+        flag = true;
+    }
+
+    //refactor using a switch statement
+    switch (myHome.Province.ToLower())
+    {
+        case "ab":
+        case "bc":
+        case "sk":
+        case "mn":
+            {
+                flag = true;
+                break;
+            }
+        default:
+            {
+                flag = false;
+                break;
+            }
+    }
+
+    //what would a person need to do if unit testing does not exists
+    string firstname = "don";
+    string lastname = "welch";
+    Residence address = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
+    Person me = new Person(firstname, lastname, address, null);
+
+    //conside doing a loop where I make changes to the "changename", include try catch error handling
+    //also need a interface of Console prompt and read lines.
+
+    //me.FirstName = changename;
 }
-
-//refactor using a switch statement
-switch (myHome.Province.ToLower())
-{
-    case "ab":
-    case "bc":
-    case "sk":
-    case "mn":
-        {
-            flag = true;
-            break;
-        }
-    default:
-        {
-            flag = false;
-            break;
-        }
-}
-
-//what would a person need to do if unit testing does not exists
-string firstname = "Ekamjot";
-string lastname = "Kaur";
-Residence address = new Residence(123, "Maple St.", "Edmonton", "AB", "T6Y7U8");
-Person me = new Person(firstname, lastname, address, null);
-
-//consider doing a loop where I make changes to the "changename", include try catch error handling
-//also need a interface of Console prompt and read lines.
-
-//me.FirstName = changename;
