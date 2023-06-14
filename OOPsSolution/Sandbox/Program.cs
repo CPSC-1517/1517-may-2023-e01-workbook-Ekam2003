@@ -13,10 +13,24 @@ Person me = CreatePerson();
 DisplayPerson(me);
 
 //file path C:\Temp\PersonData.json
-string filepathname = @"C:\Temp\PersonData.json";
-SaveAsJson(me, filepathname);
-Person jsonMe = ReadAsJson(filepathname);
-DisplayPerson(jsonMe);
+//string filepathname = @"C:\Temp\PersonData.json";
+//SaveAsJson(me, filepathname);
+//Person jsonMe = ReadAsJson(filepathname);
+//DisplayPerson(jsonMe);
+
+//AccessReview sample
+AccessorReview ar = new AccessorReview();
+Random rnd = new Random();
+for (int i = 0; i < 10; i++)
+{
+    ar.Number1 = rnd.Next(1, 11); //using the set in the property
+    ar.SetNumber2(rnd.Next(1, 11)); //using a method in the class to overcome
+                                    //the private set in the property
+    ar.Add = 0;
+    //the get in the Add property is used to return the calculated value 
+    //the get in the Number1 and Number2 properties are used to return the data
+    Console.WriteLine($"Number1: {ar.Number1} Number2: {ar.Number2} Add: {ar.Add}");
+}
 
 Person CreatePerson()
 {
