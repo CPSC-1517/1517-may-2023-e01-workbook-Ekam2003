@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace OOPsReview
@@ -175,7 +176,8 @@ namespace OOPsReview
         // all default parameters must appear after non-default parameters in your parameter list
         // in this example, we will use Years as an default parameters
 
-    public Employment(string title, SupervisoryLevel level,
+        [JsonConstructor]
+        public Employment(string title, SupervisoryLevel level,
                         DateTime startdate, double years =0.0)
         {
             Title = title;
