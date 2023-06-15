@@ -1,0 +1,13 @@
+﻿@page
+@model WebApp.Pages.Samples.BasicEventsModel
+@{
+    //inside this @block is C# coding environment
+    //set the browser tab title
+    ViewData["Title"] = "Basic Events";
+}
+<h1>Razor Page Event Basics</h1>
+
+@if(!string.IsNullOrWhiteSpace(Model.Feedback))
+{
+    <p>@Model.Feedback</p>
+}

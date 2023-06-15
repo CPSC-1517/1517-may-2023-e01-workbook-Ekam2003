@@ -41,6 +41,7 @@
             <!--this is the root of the menu (top level) -->
             <li> <a asp-area="" asp-page="~/Index"><strong>Web App</strong></a></li>
                 <li><a asp-area="" asp-page="/Index">Home</a></li>
+                <li><a asp-area="" asp-page="/Samples/BasicEvents">Basic Events</a></li>
                 <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
             </ul>
         </nav>
@@ -51,8 +52,8 @@
         by removing the class reference for bootstrap, css is refered as a classless css
         NOTE: this do not mean you CANNOT have you rown classes in your css code
     *@
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div >
+        <main >
             @RenderBody()
         </main>
     </div>
