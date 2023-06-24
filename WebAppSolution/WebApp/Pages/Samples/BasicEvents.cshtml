@@ -11,3 +11,51 @@
 {
     <p>@Model.Feedback</p>
 }
+
+@*
+*******************************************************
+<form> arguments: methods - indicated how data is transfered
+                    get - visible on URL in the plain test
+                    post - not visible on URL, embedded within the form objects
+                           sent to server in the body of the requests
+            action - directs the server to the page to process the form
+                     optional
+                     mising or = "" - directs to the same page
+                     can be a relative or absolute URL
+
+<form method="post" action="" >
+~ if you leave action empty"" it return you to the page you are working on , it is called post back(going back to the same page)
+~ unless you are actualy going to the another page you dont need action 
+
+--It is suggested to have one form and keep all data of page in it. 
+
+<button> three types
+    submit : send the form to the server for processing
+    reset :  clears the form and does not send to the server
+    button: ?? (dont need to worry about this )
+
+Events : OnGet() : executes when the page first is conducted
+                 : executes if method="get" is specified in the <form> tag
+
+        OnPost() : executes when the form is submitted
+                 : executes if method="post" is specified in the <form>
+                 : is the default event if no specific event is specified by asp-page-handler
+
+  OnPostxxxxxxx(): executes when the form is submitted
+          ^      : executes if method="post" is specified in the <form>
+    (eventname)  : executed is asp-page-handler="xxxxxx" is specified in the <button> tag
+                 : is the deafault event if no specific event is specified by asp-page-handler
+                 : page-handler are used when there are multiple buttons on the form
+                 : adding a page-handler to your submit button override the default OnPost() event
+                   and executes the OnPostxxxxxx() event instead that is coded in your PageModel class
+*******************************************************
+*@
+
+<form method="post" action="" >
+    @*<button type="submit" > Press me (submit form to default OnPost Event) </button>*@
+    <button type="submit" asp-page-handler="FirstButton"> Press me (submit form to default OnPost Event) </button>
+    &nbsp;&nbsp;
+    <button type="submit" asp-page-handler="SecondButton"> 
+        Press me (submit form to OnPostSecondButton event code)
+    </button>
+</form>
