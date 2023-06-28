@@ -8,6 +8,8 @@ namespace WebApp.Pages.Samples
         //form control properties
         public double Num { get; set; }
         public string MassText { get; set; }
+
+        public int FavouriteCourse { get; set; } //using integer value from select
         public void OnGet()
         {
         }
