@@ -61,7 +61,7 @@ namespace WebApp.Pages.Samples
         // appended name on OnPost
         public void OnPostSecondButton()
         {
-            Feedback="You clicked the second button and there is coded event for the button page handler"
+            Feedback = "You clicked the second button and there is coded event for the button page handler";
         }
     }
 }
