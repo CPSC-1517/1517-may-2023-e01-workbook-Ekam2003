@@ -64,22 +64,23 @@
 <div asp-validation-summary="All" >
     @if (ModelState.ErrorCount>0)
     {
-        <p>Please review the following concern to correct your submission:</p>
+        <p>Please review the (validation summary) following concern to correct your submission:</p>
     }
 
-    @if(Model.ErrorList.Count()>0)
-    {
-        <p> Please review the following concern to correct your submission:</p>
-        <ul>
-            @foreach(var error in Model.ErrorList)
-            {
-                <li>
-                    @error
-                </li>
-            }
-        </ul>
-    }
+   
 </div>
+@if (Model.ErrorList.Count() > 0)
+{
+    <p> Please review the (manual display) following concern to correct your submission:</p>
+    <ul>
+        @foreach (var error in Model.ErrorList)
+        {
+            <li>
+                @error
+            </li>
+        }
+    </ul>
+}
 <form method="post">
     <label>
         Enter a number (standard text box control):
@@ -113,6 +114,8 @@
             </select>
             <br /><br />
             <button type="submit" asp-page-handler="ControlProcessing">Submit Form Data</button>
+            &nbsp; &nbsp;
+            <button type="submit" asp-page-handler="RedirectPage">Go to Basic Events</button>
  </form>
  <br /><br />
  Processing Results: @Model.FeedBack
