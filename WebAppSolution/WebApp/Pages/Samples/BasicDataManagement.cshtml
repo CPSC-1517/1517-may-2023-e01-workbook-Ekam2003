@@ -45,9 +45,44 @@
                             the value attribute then the return value will be
                             the text displayed in the list
 *@
+@*
+    the following is a setup that allows the display of recorded errors
+    saved within your PageMoel when you use ModelState. The method used 
+    to save each error is .AddModelError(xxxx).
+    it will automatically format tour erorrs in a nice list using asp-validation-summary
+
+    an alternative is for you to do your own coding
+    in this case you will need 
+    a) a property in your PageModel(List<string> ErrorList)
+    b) you would have to code your own loop containing an unordered list. Each <li>
+        would represent an error line.
+
+
+   
+*@
+
+<div asp-validation-summary="All" >
+    @if (ModelState.ErrorCount>0)
+    {
+        <p>Please review the following concern to correct your submission:</p>
+    }
+
+    @if(Model.ErrorList.Count()>0)
+    {
+        <p> Please review the following concern to correct your submission:</p>
+        <ul>
+            @foreach(var error in Model.ErrorList)
+            {
+                <li>
+                    @error
+                </li>
+            }
+        </ul>
+    }
+</div>
 <form method="post">
     <label>
-        Enter a number:
+        Enter a number (standard text box control):
         <input type="number" asp-for="Num" step="0.01"/>
     </label>
     <label>
@@ -65,4 +100,19 @@
             <option value="1517">Introduction to Web Applications</option>
         </select>
     </label>
+
+            <label>
+                Using a select without a value on the option tag:
+            </label>
+            <select asp-for="FavouriteCourseNoValueOnOption" class="bigbox">
+                <option>on screen prompt line ....</option>
+                <option>Digital Media Tools</option>
+                <option>Programming Fundamentals</option>
+                <option>Web Design Fundamentals</option>
+                <option>Introduction to Web Applications</option>
+            </select>
+            <br /><br />
+            <button type="submit" asp-page-handler="ControlProcessing">Submit Form Data</button>
  </form>
+ <br /><br />
+ Processing Results: @Model.FeedBack
