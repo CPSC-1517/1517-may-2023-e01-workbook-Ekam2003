@@ -1,0 +1,35 @@
+﻿.danger_color{
+    color: firebrick;
+    font-weight:bolder;
+}
+
+.error_are_color{
+    background-color:aquamarine;
+}
+/*changing the width of your page*/
+:root {
+    --max-body-width: 80rem;
+       /* 80 rem = 80% of the page is occupied*/
+}
+
+.setflex{
+    display:flex;
+}
+
+.oneHalf{
+    width:47%;
+    margin-right:3%;
+
+}
+
+.smallbox{
+    width:60px;
+}
+
+.mediumbox {
+    width: 180px;
+}
+
+.bigbox {
+    width: 300px;
+}
