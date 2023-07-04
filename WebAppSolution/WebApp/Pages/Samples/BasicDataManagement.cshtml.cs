@@ -104,7 +104,15 @@ namespace WebApp.Pages.Samples
             if (Num < 0)
             {
                 // using ModelState
-                ModelState.AddModelError("", $"Num value of {Num} cannot be negative");
+                //we can associate the AddModelError with the asp-validation-for span control
+                //  on the form so that the error messages appears beside the input control
+
+                //the AddModelError version within 2 arguments is used to associate the 
+                //error with the span tag
+                //the first argument of the AddModelError is where you do your association
+                // the first argument is the property that is the associate property to 
+                //the input control
+                ModelState.AddModelError(nameof(Num), $"Num value of {Num} cannot be negative");
 
                 //managing your own errors
                 ErrorList.Add($"Num value of {Num} cannot be negative");
@@ -115,7 +123,7 @@ namespace WebApp.Pages.Samples
             if (string.IsNullOrWhiteSpace(MassText))
             {
                 //using ModelState
-                ModelState.AddModelError("", $"Comment not supplied");
+                ModelState.AddModelError("MassText", $"Comment not supplied");
 
                 //managing your own errors
                 ErrorList.Add($"Comment not supplied");
@@ -123,7 +131,7 @@ namespace WebApp.Pages.Samples
             if (FavouriteCourse == 0)
             {
                 //using ModelState
-                ModelState.AddModelError("", $"You did not pick a favourite course");
+                ModelState.AddModelError("FavouriteCourse", $"You did not pick a favourite course");
 
                 //managing your own errors
                 ErrorList.Add($"You did not pick a favourite course");
