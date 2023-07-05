@@ -16,7 +16,7 @@ namespace WebApp.Pages.Samples
 
         [BindProperty]
         public StudentMarks studentRecord { get; set; }
-      
+
         //[BindProperty]
         //public string? FirstName { get; set; }
         //[BindProperty]
@@ -31,6 +31,10 @@ namespace WebApp.Pages.Samples
         //[BindProperty]
         //public double Mark { get; set; }
 
+        // dependency injection (constructor injection technique)
+        // a) create a constructor for your pagemodel class 
+        // b) the services you wish to inject will be parameters on the contructor
+        // c) save the incoming parameter values in a public property.
         public StudentMarkInputModel(IWebHostEnvironment env)
         {
             _webHostEnvironment = env;
